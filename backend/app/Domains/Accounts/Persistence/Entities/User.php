@@ -1,15 +1,21 @@
 <?php
 
-namespace App\Models;
+namespace App\Domains\Accounts\Persistence\Entities;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Domains\Accounts\Enums\UserRole;
+use App\Domains\Loyalty\Persistence\Entities\Achievement;
+use App\Domains\Loyalty\Persistence\Entities\Badge;
+use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
+    /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
     /**
@@ -21,6 +27,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -43,6 +50,25 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'role' => UserRole::class,
         ];
+    }
+
+//    /**
+//     * @return BelongsToMany<Achievement>
+//     */
+    public function achievements(): BelongsToMany
+    {
+        return $this->belongsToMany(Achievement::class, 'user_achievements')
+            ->withPivot('unlocked_at');
+    }
+
+    /**
+     * @return BelongsToMany<Badge>
+     */
+    public function badges(): BelongsToMany
+    {
+        return $this->belongsToMany(Badge::class, 'user_badges')
+            ->wherePivot('awarded_at');
     }
 }
