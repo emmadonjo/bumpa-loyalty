@@ -8,6 +8,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class UserAchievementController
 {
@@ -17,6 +18,7 @@ class UserAchievementController
 
     public function index(Request $request): JsonResponse
     {
+        Gate::authorize('isAdmin');
         $params = $this->getParams($request);
         $achievements = $this->userAchievementService->get($params);
         return response()->json([
@@ -34,11 +36,15 @@ class UserAchievementController
      */
     public function userAchievements(Request $request, int $id): JsonResponse
     {
-        $userId = Auth::id();
-        abort_unless($userId === $id, Response::HTTP_FORBIDDEN, 'Forbidden');
+        $user = Auth::user();
+        abort_unless(
+            $user->id === $id || $user->isAdmin(),
+            Response::HTTP_FORBIDDEN,
+            'Forbidden'
+        );
 
         $params = $this->getParams($request);
-        $params['user_id'] = $userId;
+        $params['user_id'] = $user->id;
         $achievements = $this->userAchievementService->get($params);
         return response()->json([
             'success' => true,

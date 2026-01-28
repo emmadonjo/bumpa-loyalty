@@ -79,4 +79,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(LoyaltyTracker::class, 'user_id');
     }
+
+    public function isAdmin(): bool
+    {
+        return $this->role->is(UserRole::ADMIN);
+    }
 }

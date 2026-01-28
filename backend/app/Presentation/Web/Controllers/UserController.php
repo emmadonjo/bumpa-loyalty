@@ -9,6 +9,8 @@ use App\Presentation\Web\Contracts\Controller;
 use App\Presentation\Web\Resources\UserResource;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
@@ -19,6 +21,8 @@ class UserController extends Controller
 
     public function index(Request $request): JsonResponse
     {
+        Gate::authorize('isAdmin');
+
         $perPage = $request->integer('per_page', 20);
         $perPage = min(max(1, $perPage), 100);
         $search = $request->string('search');
@@ -36,6 +40,13 @@ class UserController extends Controller
 
     public function show(Request $request, int $id): JsonResponse
     {
+        $user = Auth::user();
+        abort_unless(
+            $user->id === $id || $user->isAdmin(),
+            Response::HTTP_FORBIDDEN,
+            'Forbidden'
+        );
+
         $user = $this->userService->getCustomerWithLoyaltyInfo($id);
 
         if (!$user) {

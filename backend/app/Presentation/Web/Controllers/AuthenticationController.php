@@ -2,12 +2,14 @@
 
 namespace App\Presentation\Web\Controllers;
 
+use App\Domains\Accounts\Persistence\Entities\User;
 use App\Domains\Accounts\Services\AuthService;
 use App\Domains\Accounts\Services\UserService;
 use app\Presentation\Web\Contracts\Controller;
 use App\Presentation\Web\Requests\LoginRequest;
 use App\Presentation\Web\Resources\UserResource;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
 class AuthenticationController extends Controller
@@ -51,7 +53,10 @@ class AuthenticationController extends Controller
 
     public function logout(): JsonResponse
     {
-        $this->authService->logout();
+        /** @var User $user */
+        $user = Auth::user();
+        $this->authService->logout($user);
+
         return response()->json([
             'status' => true,
             'message' => 'Logout successful',

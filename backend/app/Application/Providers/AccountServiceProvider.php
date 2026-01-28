@@ -4,6 +4,7 @@ namespace App\Application\Providers;
 
 use App\Domains\Accounts\Persistence\Contracts\UserRepositoryInterface;
 use App\Domains\Accounts\Persistence\Repositories\UserRepository;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class AccountServiceProvider extends ServiceProvider
@@ -15,6 +16,8 @@ class AccountServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-
+        Gate::define('isAdmin', function ($user): bool {
+            return $user->isAdmin();
+        });
     }
 }
