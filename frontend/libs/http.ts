@@ -1,5 +1,5 @@
 import axios, { AxiosResponse, InternalAxiosRequestConfig } from "axios";
-import { clearToken, getToken} from "@/helpers";
+import { clearStoreItem, getStoreItem} from "@/helpers";
 import {app} from "@/configs";
 
 const http = axios.create({
@@ -9,7 +9,7 @@ const http = axios.create({
 http.interceptors.request.use(
     async function (config: InternalAxiosRequestConfig) {
         if (typeof window !== 'undefined') {
-            const token = getToken();
+            const token = getStoreItem('auth');
 
             if (token) {
                 config.headers.Authorization = `Bearer ${token}`;
@@ -32,7 +32,8 @@ http.interceptors.response.use(
     function (error) {
         if (error.response && error.response.status === 401) {
             if (typeof window !== 'undefined') {
-                clearToken();
+                clearStoreItem('auth');
+                clearStoreItem('_user');
             }
 
             window.location.href = '/login';

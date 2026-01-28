@@ -2,7 +2,7 @@ import { login, logout } from "@/store/actions/auth.actions";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {ApiResponseProps, ApiErrorProps, User} from "@/types";
 import { addToast } from "@heroui/react";
-import {getToken, saveToken} from "@/helpers";
+import {getStoreItem, saveStoreItem} from "@/helpers";
 
 export interface AuthState {
     isLoading: boolean;
@@ -21,8 +21,8 @@ const initialState: AuthState = {
     isError: false,
     errors: null,
     message: null,
-    authToken: getToken(),
-    user: null,
+    authToken: getStoreItem('auth') ,
+    user: JSON.parse(getStoreItem('_user') as string) ?? null,
     hydrated: false,
 };
 
@@ -64,7 +64,8 @@ const auth = createSlice({
                 const data = action.payload.data as { user: User, token: string };
                 state.authToken = data.token;
                 state.user = data.user;
-                saveToken(data.token);
+                saveStoreItem('auth', data.token);
+                saveStoreItem('_user', JSON.stringify(data.user));
                 console.log(action.payload)
                 state.isLoading = false;
                 state.isSuccess = true;

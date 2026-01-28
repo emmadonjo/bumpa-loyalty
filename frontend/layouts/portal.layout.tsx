@@ -1,11 +1,13 @@
 "use client";
 
 import { BreadcrumbsItemProps } from "@/types";
-import { ReactNode, useEffect } from "react";
+import {ReactNode, useCallback, useEffect, useState} from "react";
 import { BreadcrumbItem, Breadcrumbs } from "@heroui/react";
 import { HiHome } from "react-icons/hi2";
 import { usePathname, useRouter } from "next/navigation";
 import useAuth from "@/hooks/auth.hook";
+import Sidebar from "@/layouts/sidebar";
+import Header from "@/layouts/header";
 
 interface AuthLayoutProps {
     children: ReactNode;
@@ -21,6 +23,18 @@ export default function PortalLayout({
     const router = useRouter();
     const pathname = usePathname();
     const { token, hydrated, isLoading } = useAuth();
+
+    const [showMenu, setShowMenu] = useState<boolean>(false);
+
+    const toggleMenu = () => {
+        setShowMenu(!showMenu);
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', () => {
+            setShowMenu(window.innerWidth > 640);
+        })
+    }, []);
 
     useEffect(() => {
         if (!hydrated || isLoading) return;
@@ -42,8 +56,8 @@ export default function PortalLayout({
 
     return (
         <div className="bg-default-50/30 min-h-screen">
-            {/*<SideMenu />*/}
-            {/*<Header />*/}
+            <Sidebar showMenu={showMenu} />
+            <Header toggleMenu={toggleMenu} showMenu={showMenu}/>
             <main className="pt-[100px] pl-6 pr-6 sm:ml-[240px]">
                 <div className="flex items-center flex-wrap gap-4 justify-between pr-6 mb-10">
                     {title && (

@@ -26,30 +26,13 @@ export type ApiSuccessProps<T = unknown> = {
 export interface User {
     id: number;
     name: string;
-    first_name: string;
-    last_name: string;
     email: string;
     email_verified_at?: string;
-    status: "pending" | "active" | "inactive" | "banned";
-    profile_photo: string;
-    country?: number;
-    state?: number;
-    city?: number;
-    phone?: string;
-    address?: string;
+    role: 'admin' | 'customer';
     created_at?: string;
     updated_at?: string;
-    role_name?: string;
 }
 
-export type LoginResponseData = {
-    message: string;
-    status: boolean;
-    data: {
-        user: User;
-        token: string;
-    }
-}
 
 export interface BreadcrumbsItemProps extends BreadcrumbsProps {
     title: string;
