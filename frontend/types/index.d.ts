@@ -22,7 +22,12 @@ export type ApiSuccessProps<T = unknown> = {
     message?: string;
     data: ApiResponseProps<T>
 }
-
+export interface Badge {
+    id: number;
+    name: string;
+    icon_url?: string;
+    achievements_required: number;
+}
 export interface User {
     id: number;
     name: string;
@@ -31,6 +36,8 @@ export interface User {
     role: 'admin' | 'customer';
     created_at?: string;
     updated_at?: string;
+    achievements_count?: number;
+    current_badge?: Badge;
 }
 
 
@@ -39,17 +46,20 @@ export interface BreadcrumbsItemProps extends BreadcrumbsProps {
     href: string;
 }
 
-// export type SideMenuLinkProps = {
-//     name: string;
-//     icon: IconType;
-//     href: string;
-//     activeRoute: string;
-//     permissions?: string[] | string | undefined;
-//     submenus?: SideMenuLinkProps[];
-// }
 
+export type QueryParams = {
+    page: number;
+    per_page?: number;
+    search?: string;
+    filters?: Record<string, never>;
+}
 
-export type QueryParams = Record<string, string | number | null | Record<string, string | number | boolean | null>>;
+export interface Meta {
+    current_page: number;
+    last_page: number;
+    per_page: number;
+    total: number;
+}
 
 export type PaginationProps = {
     current_page: number;

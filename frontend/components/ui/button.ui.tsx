@@ -1,5 +1,4 @@
 import { ButtonProps, Button as HeroUIButton} from "@heroui/react";
-import useAuth from "@/hooks/auth.hook";
 
 export default function Button({
    children,
@@ -8,7 +7,6 @@ export default function Button({
    variant = 'solid',
    ...props
 }: ButtonProps) {
-    const auth = useAuth();
     return (
         <HeroUIButton
             color={color}

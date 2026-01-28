@@ -60,7 +60,7 @@ export default function PortalLayout({
         <div className="bg-default-50/30 min-h-screen">
             <Sidebar showMenu={showMenu} hideMenu={hideMenu} />
             <Header toggleMenu={toggleMenu} showMenu={showMenu}/>
-            <main className="pt-[100px] pl-6 pr-6 sm:ml-[240px]">
+            <main className="pt-[100px] pl-6 pr-6 sm:ml-[240px] max-w-7xl mx-auto">
                 <div className="flex items-center flex-wrap gap-4 justify-between pr-6 mb-10">
                     {title && (
                         <h1 className="text-base font-medium text-default-700">{title}</h1>
