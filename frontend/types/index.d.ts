@@ -37,9 +37,20 @@ export interface User {
     created_at?: string;
     updated_at?: string;
     achievements_count?: number;
-    current_badge?: Badge;
+    loyalty_info?: LoyaltyInfo;
 }
 
+export interface LoyaltyInfo {
+    id: number;
+    current_badge_id?: number;
+    current_badge?: Badge;
+    purchase_count: number;
+    total_spent: number;
+    payout_balance: number;
+    total_achievements: number;
+    created_at: string;
+    updated_at?: string;
+}
 
 export interface BreadcrumbsItemProps extends BreadcrumbsProps {
     title: string;

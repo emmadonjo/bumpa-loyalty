@@ -54,7 +54,7 @@ export default function CustomersList(){
                                 <TableCell className="whitespace-nowrap">{datum.name}</TableCell>
                                 <TableCell className="whitespace-nowrap">{datum.email}</TableCell>
                                 <TableCell className="whitespace-nowrap text-center">{ datum.achievements_count ?? 0 }</TableCell>
-                                <TableCell className="whitespace-nowrap">{ datum.current_badge ? datum.current_badge.name : '' }</TableCell>
+                                <TableCell className="whitespace-nowrap">{ datum.loyalty_info?.current_badge ? datum.loyalty_info.current_badge.name : '' }</TableCell>
                                 <TableCell className="whitespace-nowrap">{ formatDate(datum.created_at, 'DD')}</TableCell>
                                 {/*<TableCell>*/}
                                 {/*    <div className="flex items-center gap-x-4">*/}
