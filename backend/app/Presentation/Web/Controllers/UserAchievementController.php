@@ -3,6 +3,7 @@
 namespace App\Presentation\Web\Controllers;
 
 use App\Domains\Loyalty\Services\UserAchievementService;
+use App\Presentation\Web\Contracts\Controller;
 use App\Presentation\Web\Resources\UserAchievementResource;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -10,7 +11,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
-class UserAchievementController
+class UserAchievementController extends Controller
 {
     public function __construct(
         private readonly UserAchievementService $userAchievementService,
@@ -21,11 +22,7 @@ class UserAchievementController
         Gate::authorize('isAdmin');
         $params = $this->getParams($request);
         $achievements = $this->userAchievementService->get($params);
-        return response()->json([
-            'success' => true,
-            'message' => null,
-            'data' => UserAchievementResource::collection($achievements),
-        ]);
+        return $this->apiSuccess(UserAchievementResource::collection($achievements));
     }
 
     /**
@@ -46,11 +43,7 @@ class UserAchievementController
         $params = $this->getParams($request);
         $params['user_id'] = $user->id;
         $achievements = $this->userAchievementService->get($params);
-        return response()->json([
-            'success' => true,
-            'message' => null,
-            'data' => UserAchievementResource::collection($achievements),
-        ]);
+        return $this->apiSuccess(UserAchievementResource::collection($achievements));
     }
 
     /**

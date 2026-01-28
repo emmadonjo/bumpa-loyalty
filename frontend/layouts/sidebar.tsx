@@ -32,7 +32,7 @@ export default function Sidebar({
     }, [hideMenu]);
 
     return (
-        <div className={`w-full max-w-[240px] h-screen bg-white fixed top-0 left-0 ${showMenu ? '' : 'hidden sm:block'}`} ref={elementRef}>
+        <div className={`w-full max-w-[240px] h-screen bg-white fixed z-40 top-0 left-0 ${showMenu ? '' : 'hidden sm:block'}`} ref={elementRef}>
             <nav className="h-screen overflow-y-auto pt-24">
                 <ul className="w-full">
                     {

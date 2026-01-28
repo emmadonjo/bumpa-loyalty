@@ -1,3 +1,4 @@
+"use client";
 import { Pagination as HeroUIPagination, PaginationProps } from "@heroui/react";
 
 interface Props extends PaginationProps {

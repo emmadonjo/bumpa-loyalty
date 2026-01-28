@@ -3,11 +3,11 @@ import {HiOutlineBadgeCheck} from "react-icons/hi";
 
 export const adminLinks = [
     {href: '/', label: 'Dashboard', icon: HiOutlineChartBar},
-    {href: '/achievements', label: 'Achievements', icon: HiOutlineBadgeCheck},
+    {href: '/admin/achievements', label: 'Achievements', icon: HiOutlineBadgeCheck},
 ];
 
 
 export const userLinks = [
     {href: '/', label: 'Dashboard', icon: HiOutlineChartBar},
-    {href: '/achievements', label: 'Achievements', icon: HiOutlineBadgeCheck},
+    {href: '/user/achievements', label: 'Achievements', icon: HiOutlineBadgeCheck},
 ]

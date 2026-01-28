@@ -11,7 +11,7 @@ export default function Header({
     showMenu: boolean;
 }) {
     return (
-        <div className="w-full fixed top-0 left-0 bg-white z-10 py-4 px-6 border-b border-primary-600 flex items-center justify-between">
+        <div className="w-full fixed top-0 left-0 bg-white z-40 py-4 px-6 border-b border-primary-600 flex items-center justify-between">
             <div className="text-2xl font-semibold flex items-center gap-x-3">
                 <Link href="/" className="hover:text-primary">
                     Bumpa Loyalty

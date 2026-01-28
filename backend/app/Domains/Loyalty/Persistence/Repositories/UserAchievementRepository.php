@@ -2,17 +2,19 @@
 
 namespace App\Domains\Loyalty\Persistence\Repositories;
 
+use App\Domains\Accounts\Enums\UserRole;
 use App\Domains\Loyalty\Persistence\Contracts\UserAchievementRepositoryInterface;
 use App\Domains\Loyalty\Persistence\Entities\UserAchievement;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Contracts\Pagination\Paginator;
 
 class UserAchievementRepository implements UserAchievementRepositoryInterface
 {
     /**
      * @param array $params
-     * @return Paginator<UserAchievement>
+     * @return LengthAwarePaginator<UserAchievement>
      */
-    public function get(array $params = []): Paginator
+    public function get(array $params = []): LengthAwarePaginator
     {
         $search = data_get($params, 'search');
         $type = data_get($params, 'type');
@@ -41,6 +43,9 @@ class UserAchievementRepository implements UserAchievementRepositoryInterface
                     $query->where('id', $user_id);
                 });
             })
-            ->simplePaginate((int)$perPage);
+            ->whereDoesntHave('user', function ($query) {
+                $query->where('role', '=', UserRole::ADMIN->value);
+            })
+            ->paginate((int)$perPage);
     }
 }

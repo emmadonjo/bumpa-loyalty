@@ -52,6 +52,26 @@ export interface LoyaltyInfo {
     updated_at?: string;
 }
 
+export interface Achievement {
+    id: number;
+    name: string;
+    type: string;
+    threshold: number;
+    reward: number;
+    description: string;
+    created_at: string;
+    updated_at?: string;
+}
+
+export interface UserAchievement {
+    id: number;
+    user_id: number;
+    achievement_id: number;
+    user: User;
+    achievement: Achievement;
+    unlocked_at: string;
+}
+
 export interface BreadcrumbsItemProps extends BreadcrumbsProps {
     title: string;
     href: string;

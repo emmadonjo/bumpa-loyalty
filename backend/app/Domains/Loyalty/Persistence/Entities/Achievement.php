@@ -28,7 +28,7 @@ class Achievement extends Model
         return [
             'type' => AchievementType::class,
             'threshold' => 'int',
-            'reward' => 'decimal',
+            'reward' => 'decimal:2',
         ];
     }
 }

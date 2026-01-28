@@ -4,9 +4,9 @@ namespace App\Domains\Loyalty\Services;
 
 use App\Domains\Loyalty\Persistence\Contracts\UserAchievementRepositoryInterface;
 use App\Domains\Loyalty\Persistence\Entities\UserAchievement;
-use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
-class UserAchievementService
+final class UserAchievementService
 {
     public function __construct(
         private readonly UserAchievementRepositoryInterface $repository,
@@ -14,9 +14,9 @@ class UserAchievementService
 
     /**
      * @param array $params
-     * @return Paginator<UserAchievement>
+     * @return LengthAwarePaginator<UserAchievement>
      */
-    public function get(array $params): Paginator
+    public function get(array $params): LengthAwarePaginator
     {
         return $this->repository->get($params);
     }

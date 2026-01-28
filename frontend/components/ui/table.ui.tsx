@@ -1,3 +1,4 @@
+"use client";
 import { TableProps, Table as HeroUITable } from "@heroui/react";
 
 export default function Table({

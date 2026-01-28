@@ -1,3 +1,4 @@
+"use client";
 import { SubmitEvent, useState } from "react";
 import { HiMagnifyingGlass, HiXMark } from "react-icons/hi2";
 

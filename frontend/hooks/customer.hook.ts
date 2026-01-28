@@ -40,7 +40,7 @@ const useCustomer = (autoFetch = false) => {
         customers,
         meta,
         getCustomers,
-        setPage: (page: number) => getCustomers({ page: page }),
+        setPage: (page: number) => getCustomers({ page }),
         setSearch: (search: string) => getCustomers({search, page: 1}),
     }
 }
