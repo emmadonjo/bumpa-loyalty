@@ -1,1 +1,1 @@
-# Bumpa Loyalty
+# Bumpa Loyalty Portal
