@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import {adminLinks, userLinks} from '@/layouts/links'
 import useAuth from "@/hooks/auth.hook";
