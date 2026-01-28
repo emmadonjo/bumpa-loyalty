@@ -8,7 +8,7 @@ export default heroui({
                 foreground: '#262626',
                 primary: {
                     foreground: '#262626',
-                    DEFAULT: '#73c356',
+                    DEFAULT: '#09b353',
                     50: '#ddffee',
                     100: '#b0ffd5',
                     200: '#80ffba',

@@ -1,6 +1,9 @@
 "use client";
 
-import {HeroUIProvider} from '@heroui/react';
+import {HeroUIProvider, ToastProvider} from '@heroui/react';
+import { Provider } from 'react-redux';
+import {ReactNode} from "react";
+import {store} from "@/store";
 
 type ProvidersProps = {
     children: ReactNode;
@@ -8,7 +11,10 @@ type ProvidersProps = {
 export function Providers({children}: ProvidersProps) {
     return (
         <HeroUIProvider>
-            {children}
+            <Provider store={store}>
+                <ToastProvider placement="top-right" />
+                {children}
+            </Provider>
         </HeroUIProvider>
     )
 }

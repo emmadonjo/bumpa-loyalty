@@ -2,6 +2,7 @@ import {Providers} from "./providers";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Hydrator from "@/app/hydrator";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,10 +27,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-primary-600`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-default-50`}
       >
       <Providers>
-        {children}
+          <Hydrator>{children}</Hydrator>
       </Providers>
       </body>
     </html>
