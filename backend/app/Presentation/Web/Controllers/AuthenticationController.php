@@ -5,7 +5,7 @@ namespace App\Presentation\Web\Controllers;
 use App\Domains\Accounts\Persistence\Entities\User;
 use App\Domains\Accounts\Services\AuthService;
 use App\Domains\Accounts\Services\UserService;
-use app\Presentation\Web\Contracts\Controller;
+use App\Presentation\Web\Contracts\Controller;
 use App\Presentation\Web\Requests\LoginRequest;
 use App\Presentation\Web\Resources\UserResource;
 use Illuminate\Http\JsonResponse;
@@ -40,7 +40,7 @@ class AuthenticationController extends Controller
             ]);
         }
 
-        $token = $user->createToken('bumpa-loyalty-app')->accessToken;
+        $token = $user->createToken('bumpa-loyalty-app')->plainTextToken;
         return response()->json([
             'status' => true,
             'message' => 'Login successful',

@@ -31,14 +31,10 @@ class UserController extends Controller
             'per_page' => $perPage,
         ]);
 
-        return response()->json([
-            'status' => true,
-            'message' => null,
-            'data' => UserResource::collection($users),
-        ]);
+        return $this->apiSuccess(UserResource::collection($users));
     }
 
-    public function show(Request $request, int $id): JsonResponse
+    public function show(int $id): JsonResponse
     {
         $user = Auth::user();
         abort_unless(
@@ -50,17 +46,9 @@ class UserController extends Controller
         $user = $this->userService->getCustomerWithLoyaltyInfo($id);
 
         if (!$user) {
-            return response()->json([
-                'status' => false,
-                'message' => 'User not found',
-                'data' => []
-            ], Response::HTTP_NOT_FOUND);
+            return $this->apiError([],'User not found',Response::HTTP_NOT_FOUND);
         }
 
-        return response()->json([
-            'status' => true,
-            'message' => null,
-            'data' => UserResource::make($user),
-        ]);
+        return $this->apiSuccess(UserResource::make($user));
     }
 }

@@ -10,6 +10,7 @@ class UserResource extends JsonResource
     {
         return array_merge(parent::toArray($request), [
            'loyaltyInfo' => LoyaltyInfoResource::make($this->whenLoaded('loyaltyInfo')),
+            'achievements_count' => $this->whenCounted('achievements'),
         ]);
     }
 }

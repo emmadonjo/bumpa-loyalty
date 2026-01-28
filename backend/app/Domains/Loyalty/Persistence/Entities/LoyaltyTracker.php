@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domains\Accounts\Persistence\Entities;
+namespace App\Domains\Loyalty\Persistence\Entities;
 
 use app\Domains\Accounts\Persistence\Entities\User;
 use App\Domains\Loyalty\Persistence\Entities\Badge;
@@ -26,8 +26,8 @@ class LoyaltyTracker extends Model
     {
         return [
             'purchase_count' => 'int',
-            'total_spent' => 'decimal',
-            'payout_balance' => 'decimal',
+            'total_spent' => 'decimal:2',
+            'payout_balance' => 'decimal:2',
             'total_achievements' => 'int',
         ];
     }

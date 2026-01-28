@@ -7,7 +7,9 @@ namespace App\Domains\Accounts\Persistence\Entities;
 use App\Domains\Accounts\Enums\UserRole;
 use App\Domains\Loyalty\Persistence\Entities\Achievement;
 use App\Domains\Loyalty\Persistence\Entities\Badge;
+use App\Domains\Loyalty\Persistence\Entities\LoyaltyTracker;
 use Database\Factories\UserFactory;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -57,9 +59,17 @@ class User extends Authenticatable
         ];
     }
 
-//    /**
-//     * @return BelongsToMany<Achievement>
-//     */
+    /**
+     * @return UserFactory|Factory
+     */
+    protected static function newFactory(): UserFactory|Factory
+    {
+        return UserFactory::new();
+    }
+
+    /**
+     * @return BelongsToMany<Achievement>
+     */
     public function achievements(): BelongsToMany
     {
         return $this->belongsToMany(Achievement::class, 'user_achievements')
@@ -82,6 +92,6 @@ class User extends Authenticatable
 
     public function isAdmin(): bool
     {
-        return $this->role->is(UserRole::ADMIN);
+        return $this->role == UserRole::ADMIN;
     }
 }

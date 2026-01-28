@@ -4,7 +4,7 @@ namespace App\Domains\Accounts\Persistence\Contracts;
 
 use App\Domains\Accounts\Enums\UserRole;
 use App\Domains\Accounts\Persistence\Entities\User;
-use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 interface UserRepositoryInterface
 {
@@ -12,13 +12,13 @@ interface UserRepositoryInterface
      * @param UserRole $role
      * @param array $params
      * @param bool $includedLoyaltyInfo
-     * @return Paginator<User>
+     * @return LengthAwarePaginator<User>
      */
     public function getUsersByRole(
         UserRole $role,
         array $params = [],
         bool $includedLoyaltyInfo = false,
-    ): Paginator;
+    ): LengthAwarePaginator;
 
     /**
      * Get a user's summarised loyalty info

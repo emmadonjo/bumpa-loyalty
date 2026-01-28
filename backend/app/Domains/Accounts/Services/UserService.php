@@ -5,21 +5,21 @@ namespace App\Domains\Accounts\Services;
 use App\Domains\Accounts\Enums\UserRole;
 use App\Domains\Accounts\Persistence\Contracts\UserRepositoryInterface;
 use App\Domains\Accounts\Persistence\Entities\User;
-use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
-class UserService
+readonly class UserService
 {
     public function __construct(
-        private readonly UserRepositoryInterface $repository,
+        private UserRepositoryInterface $repository,
     ){}
 
     /**
      * @param array $params
-     * @return Paginator<User>
+     * @return LengthAwarePaginator<User>
      */
-    public function getCustomers(array $params = []): Paginator
+    public function getCustomers(array $params = []): LengthAwarePaginator
     {
-        return $this->repository->getUsersByRole(UserRole::CUSTOMER, $params);
+        return $this->repository->getUsersByRole(UserRole::CUSTOMER, $params, true);
     }
 
     /**
