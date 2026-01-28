@@ -46,10 +46,12 @@ return new class extends Migration
 
         Schema::create('loyalty_trackers', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('current_badge_id')->nullable()->index();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->integer('purchase_count')->default(0);
             $table->decimal('total_spent', 12)->default(0);
             $table->decimal('payout_balance', 12)->default(0);
+            $table->integer('total_achievements')->default(0);
             $table->timestamps();
         });
     }

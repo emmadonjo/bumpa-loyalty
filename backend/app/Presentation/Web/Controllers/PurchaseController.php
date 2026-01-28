@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Presentation\Web\Shop\Controllers;
+namespace App\Presentation\Web\Controllers;
 
-use App\Shared\Contracts\Controller;
+use App\Presentation\Web\Contracts\Controller;
 use Illuminate\Http\JsonResponse;
 
 class PurchaseController extends Controller

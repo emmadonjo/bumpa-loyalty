@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Shared\Contracts;
+namespace app\Presentation\Web\Contracts;
 
 abstract class Controller
 {
