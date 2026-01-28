@@ -30,6 +30,8 @@ export default function PortalLayout({
         setShowMenu(!showMenu);
     }
 
+    const hideMenu = () => setShowMenu(false);
+
     useEffect(() => {
         window.addEventListener('resize', () => {
             setShowMenu(window.innerWidth > 640);
@@ -56,7 +58,7 @@ export default function PortalLayout({
 
     return (
         <div className="bg-default-50/30 min-h-screen">
-            <Sidebar showMenu={showMenu} />
+            <Sidebar showMenu={showMenu} hideMenu={hideMenu} />
             <Header toggleMenu={toggleMenu} showMenu={showMenu}/>
             <main className="pt-[100px] pl-6 pr-6 sm:ml-[240px]">
                 <div className="flex items-center flex-wrap gap-4 justify-between pr-6 mb-10">
