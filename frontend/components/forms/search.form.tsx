@@ -25,9 +25,9 @@ export default function SearchForm({
     }
     return (
         <form onSubmit={handleSubmit} className={`relative border rounded-md group ${className}`}>
-            <button type="submit" className={`absolute left-2 inset-y-2.5 hover:cursor-pointer hover:opacity-40`}>
-                <HiMagnifyingGlass size={14} />
-            </button>
+            {!!search && <button type="button" className={`absolute left-2 inset-y-2.5 hover:cursor-pointer hover:opacity-40 text-danger-400`}onClick={handleClearSearch}>
+                <HiXMark size={18} />
+            </button>}
             <input
                 type="text"
                 placeholder={placeholder}
@@ -35,10 +35,9 @@ export default function SearchForm({
                 onChange={e => setSearch(e.target.value as string)}
                 className="bg-inherit py-1.5 px-8 border-0 outline-0 block w-full"
             />
-
-            {!!search && <button type="button" className={`absolute right-2 inset-y-2.5 hover:cursor-pointer hover:opacity-40 text-danger-400`}onClick={handleClearSearch}>
-                <HiXMark size={18} />
-            </button>}
+            <button type="submit" className={`absolute right-0 -top-0.5 hover:cursor-pointer hover:opacity-40 bg-primary w-10 h-10 rounded-md text-white flex items-center justify-center`}>
+                <HiMagnifyingGlass size={24} />
+            </button>
         </form>
     )
 }

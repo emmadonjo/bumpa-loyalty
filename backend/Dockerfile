@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libxml2-dev \
     libzip-dev \
     libicu-dev \
+    supervisor \
     && docker-php-ext-install \
         pdo_mysql \
         mbstring \
@@ -18,6 +19,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         intl \
         zip \
         opcache \
+        exif \
+        pcntl \
+        bcmath \
+        gd \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -28,17 +33,19 @@ WORKDIR /var/www/html
 
 # Copy only composer files first (layer caching)
 COPY composer.json composer.lock ./
-#RUN composer install --no-dev --no-interaction --prefer-dist -o
 
 # Copy application
 COPY . .
+
+RUN composer install --no-interaction --prefer-dist -o
+
+RUN mkdir -p /var/log/supervisor
 
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 775 storage bootstrap/cache
 
 USER www-data
 
-EXPOSE 8000
+EXPOSE ${BACKEND_PORT:-8000}
 
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
-
+CMD php artisan serve --host=0.0.0.0 --port=${BACKEND_PORT:-8000}

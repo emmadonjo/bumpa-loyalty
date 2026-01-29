@@ -9,6 +9,6 @@ COPY . .
 
 RUN npm run build
 
-EXPOSE 3000
+EXPOSE ${FRONTEND_PORT:-3000}
 
-CMD ["npm", "run", "dev"]
+CMD npm run build -- -p ${FRONTEND_PORT:-3000}
