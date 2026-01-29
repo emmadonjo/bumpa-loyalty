@@ -50,18 +50,8 @@ find_available_port() {
 # -----------------------------
 # Detect docker compose
 # -----------------------------
-RUN_ENV="${RUN_ENV:-local}"
 
-if [[ "$RUN_ENV" == "dok" ]]; then
-  COMPOSE_CMD="compose"
-elif command -v docker-compose &> /dev/null; then
-  COMPOSE_CMD="docker-compose"
-elif command docker compose version &> /dev/null; then
-  COMPOSE_CMD="docker compose"
-else
-  error "Docker Compose is not installed."
-  exit 1
-fi
+COMPOSE_CMD="compose"
 
 info "Using compose command: $COMPOSE_CMD"
 
