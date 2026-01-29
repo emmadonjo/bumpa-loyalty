@@ -27,6 +27,9 @@ export interface Badge {
     name: string;
     icon_url?: string;
     achievements_required: number;
+    pivot?: {
+        awarded_at: string;
+    }
 }
 export interface User {
     id: number;
@@ -38,6 +41,9 @@ export interface User {
     updated_at?: string;
     achievements_count?: number;
     loyalty_info?: LoyaltyInfo;
+    badges_count?: number;
+    badges?: Badge[];
+    achievements: Achievement[];
 }
 
 export interface LoyaltyInfo {

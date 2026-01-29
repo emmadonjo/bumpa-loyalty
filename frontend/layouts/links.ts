@@ -9,5 +9,4 @@ export const adminLinks = [
 
 export const userLinks = [
     {href: '/', label: 'Dashboard', icon: HiOutlineChartBar},
-    {href: '/user/achievements', label: 'Achievements', icon: HiOutlineBadgeCheck},
 ]

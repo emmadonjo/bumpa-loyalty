@@ -26,3 +26,38 @@ export const formatDate = (date: string|null = null, format:string = 'f') => {
         .setZone('Africa/Lagos')
         .toFormat(format);
 }
+
+export const money = (
+    amount: number,
+    format: string = 'en-NG',
+    currency: string = 'NGN',
+    shorten: boolean = false
+): string => {
+    let unit = '';
+    let displayValue = amount;
+
+    if (shorten) {
+        if (amount >= 1_000_000_000) {
+            unit = 'b';
+            displayValue /= 1_000_000_000;
+        } else if (amount >= 1_000_000) {
+            unit = 'm';
+            displayValue /= 1_000_000;
+        } else if (amount >= 1_000) {
+            unit = 'k';
+            displayValue /= 1_000;
+        }
+
+        displayValue = parseFloat(displayValue.toFixed(2));
+    }
+
+    const formatted = new Intl.NumberFormat(format, {
+        style: 'currency',
+        currency,
+        currencySign: 'accounting',
+        minimumFractionDigits: shorten ? 0 : 2,
+        maximumFractionDigits: shorten ? 2 : 2,
+    }).format(displayValue);
+
+    return shorten ? `${formatted}${unit}` : formatted;
+};

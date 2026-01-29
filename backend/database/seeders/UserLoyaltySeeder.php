@@ -29,7 +29,7 @@ class UserLoyaltySeeder extends Seeder
                         ]]);
                     }
 
-                    $curentBadgeId = null;
+                    $currentBadgeId = null;
 
                     $badges = Badge::get();
                     foreach ($badges as $badge) {
@@ -37,7 +37,7 @@ class UserLoyaltySeeder extends Seeder
                             $user->badges()->attach([$badge->id => [
                                 'awarded_at' => now(),
                             ]]);
-                            $curentBadgeId = $badge->id;
+                            $currentBadgeId = $badge->id;
                         }
                     }
 
@@ -47,8 +47,8 @@ class UserLoyaltySeeder extends Seeder
                     ],[
                         'purchase_count' => $take,
                         'total_spent' => $totalSpent,
-                        'payout_balance' => $achievements->sum('rewards'),
-                        'current_badge_id' => $curentBadgeId,
+                        'payout_balance' => $achievements->sum('reward'),
+                        'current_badge_id' => $currentBadgeId,
                     ]);
                 });
             }

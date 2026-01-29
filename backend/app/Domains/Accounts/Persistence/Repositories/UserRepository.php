@@ -29,9 +29,14 @@ class UserRepository implements UserRepositoryInterface
                     ->orWhere('email', 'like', $searchTerm);
             });
         })
-            ->withCount('achievements')
+            ->withCount(['achievements', 'badges'])
             ->when($includedLoyaltyInfo, function ($query) {
-                $query->with(['loyaltyInfo', 'loyaltyInfo.currentBadge']);
+                $query->with([
+                    'loyaltyInfo',
+                    'loyaltyInfo.currentBadge',
+                    'badges',
+                    'bages',
+                ]);
             })
             ->where('role', $role->value)
             ->paginate($perPage);
@@ -51,6 +56,7 @@ class UserRepository implements UserRepositoryInterface
                'achievements',
                'badges'
            ])
+           ->withCount(['achievements', 'badges'])
            ->first();
     }
 

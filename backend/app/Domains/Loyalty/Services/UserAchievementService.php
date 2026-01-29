@@ -6,10 +6,10 @@ use App\Domains\Loyalty\Persistence\Contracts\UserAchievementRepositoryInterface
 use App\Domains\Loyalty\Persistence\Entities\UserAchievement;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
-final class UserAchievementService
+final readonly class UserAchievementService
 {
     public function __construct(
-        private readonly UserAchievementRepositoryInterface $repository,
+        private UserAchievementRepositoryInterface $repository,
     ){}
 
     /**

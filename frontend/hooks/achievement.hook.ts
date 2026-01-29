@@ -4,7 +4,7 @@ import {useCallback, useEffect, useRef, useState} from "react";
 import {Meta, QueryParams, UserAchievement} from "@/types";
 import http from "@/libs/http";
 
-const useAchievement = (autoFetch = false) => {
+const useAchievement = (autoFetch = false, userId?: number) => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [usersAchievements, setUsersAchievements] = useState<UserAchievement[]>([]);
     const [meta,setMeta] = useState<Meta>({current_page: 1, last_page: 1, per_page: 20, total: 0});
@@ -14,7 +14,8 @@ const useAchievement = (autoFetch = false) => {
         setIsLoading(true);
         try {
             const finalParams = {...params.current, ...newParams};
-            const response = await http.get('/admin/users/achievements', { params: finalParams });
+            const url = userId ? `/users/${userId}/achievements` : '/admin/users/achievements';
+            const response = await http.get(url, { params: finalParams });
 
             setUsersAchievements(response.data.data);
             setMeta(response.data.meta);
@@ -24,13 +25,14 @@ const useAchievement = (autoFetch = false) => {
         }finally {
             setIsLoading(false);
         }
-    }, [params]);
+    }, [userId]);
 
     useEffect(() => {
         if (autoFetch) {
             fetchUsersAchievements();
         }
     }, [autoFetch, fetchUsersAchievements]);
+
 
     return {
         isLoading,
