@@ -52,7 +52,7 @@ find_available_port() {
 # -----------------------------
 if command -v docker-compose &> /dev/null; then
   COMPOSE_CMD="docker-compose"
-elif docker compose version &> /dev/null; then
+elif command docker compose version &> /dev/null; then
   COMPOSE_CMD="docker compose"
 else
   error "Docker Compose is not installed."
