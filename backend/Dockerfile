@@ -39,7 +39,6 @@ COPY . .
 
 RUN composer install --no-interaction --prefer-dist -o
 
-RUN php artisan key:generate
 RUN php artisan migrate:fresh --seed --force
 
 RUN mkdir -p /var/log/supervisor
