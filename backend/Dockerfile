@@ -46,6 +46,9 @@ RUN chown -R www-data:www-data /var/www/html \
 
 USER www-data
 
+COPY docker/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
+COPY docker/supervisor/*.conf /etc/supervisor/conf.d/
+
 EXPOSE ${BACKEND_PORT:-8000}
 
-CMD php artisan serve --host=0.0.0.0 --port=${BACKEND_PORT:-8000}
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]

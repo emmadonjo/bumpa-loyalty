@@ -176,7 +176,7 @@ if ! grep -q '^APP_KEY=base64:' backend/.env; then
 fi
 
 info "Running migrations and seeders..."
-docker exec loyalty-backend php artisan migrate --seed --force
+docker exec loyalty-backend php artisan migrate:fresh --seed --force
 success "Database migrated and seeded"
 
 # -----------------------------
