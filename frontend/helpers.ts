@@ -12,11 +12,17 @@ export const saveStoreItem = (key: string, token: string) => {
     }
 }
 
+
 export const getStoreItem = (key: string): string | null => {
     return typeof window !== 'undefined'
         ?localStorage.getItem(key) : null;
 }
 
+/**
+ *
+ * @param date
+ * @param format
+ */
 export const formatDate = (date: string|null = null, format:string = 'f') => {
     if (date === null) {
         return '';
@@ -27,6 +33,13 @@ export const formatDate = (date: string|null = null, format:string = 'f') => {
         .toFormat(format);
 }
 
+/**
+ *
+ * @param amount
+ * @param format
+ * @param currency
+ * @param shorten
+ */
 export const money = (
     amount: number,
     format: string = 'en-NG',
@@ -61,3 +74,12 @@ export const money = (
 
     return shorten ? `${formatted}${unit}` : formatted;
 };
+
+/**
+ * @param {number} min
+ * @param {number} max
+ * @returns {number}
+ */
+export const randomInt = (min: number, max: number): number => {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}

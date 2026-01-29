@@ -1,21 +1,19 @@
 "use client";
 
-import {useState, SubmitEvent} from "react";
+import {SubmitEvent, useMemo} from "react";
 import usePurchase from "@/hooks/user.purchase";
 import Button from "@/components/ui/button.ui";
-import AchievementPop from "@/components/achievement.notify.component";
+import {money, randomInt} from "@/helpers";
 
 export default function SimulatePurchase(){
-    const [isSuccess, setIsSuccess] = useState<boolean>(false);
     const {isSubmitting, simulatePurchase} = usePurchase();
+
+    const amount = useMemo(() => randomInt(100, 5000), []);
 
     const onSubmit = async (e: SubmitEvent) => {
         e.preventDefault();
-        simulatePurchase(() => {
-            setIsSuccess(true);
-            setTimeout(() => {
-                setIsSuccess(false);
-            }, 2500);
+        simulatePurchase(amount,(checkoutUrl: string) => {
+            window.location.href = checkoutUrl;
         })
     }
     return (
@@ -26,15 +24,9 @@ export default function SimulatePurchase(){
                     isDisabled={isSubmitting}
                     isLoading={isSubmitting}
                 >
-                    Simulate Purchase
+                    Simulate Purchase ({money(amount)})
                 </Button>
             </form>
-
-            {
-                !isSubmitting && isSuccess && (
-                   <AchievementPop title="Achievement Unlocked" description="You are definitely rocking it with this new achievement of yours" />
-                )
-            }
         </div>
     )
 }

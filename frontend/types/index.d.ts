@@ -78,6 +78,24 @@ export interface UserAchievement {
     unlocked_at: string;
 }
 
+export interface Purchase {
+    id: number;
+    reference: string;
+    status: 'successful' | 'pending' | 'failed' | 'abandoned' | 'cancelled';
+    amount: number;
+    fees: number;
+    purchased_at?: string;
+    description?: string;
+    external_reference?: string;
+    provider: string;
+    payment_method: string;
+    currency: string;
+    created_at: string;
+    updated_at: string;
+    user_id: number;
+    user?: User;
+}
+
 export interface BreadcrumbsItemProps extends BreadcrumbsProps {
     title: string;
     href: string;

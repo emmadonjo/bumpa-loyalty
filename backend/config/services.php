@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'paystack' => [
+        'base_url' => env('PAYSTACK_API_URL', 'https://api.paystack.co'),
+        'api_key' => env('PAYSTACK_API_KEY', ''),
+        'payment_channels' => env('PAYSTACK_API_ALLOWED_PAYMENT_CHANNELS', ''),
+    ]
 ];

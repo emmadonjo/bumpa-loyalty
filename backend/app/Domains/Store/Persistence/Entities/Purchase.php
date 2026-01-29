@@ -3,6 +3,7 @@
 namespace App\Domains\Store\Persistence\Entities;
 
 use App\Domains\Accounts\Persistence\Entities\User;
+use App\Domains\Store\Enums\PurchaseStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -17,6 +18,15 @@ class Purchase extends Model
         'amount',
         'purchased_at',
         'description',
+        'reference',
+        'external_reference',
+        'provider',
+        'payment_method',
+        'fees',
+        'currency',
+        'request_payload',
+        'response_payload',
+        'status',
     ];
 
     /**
@@ -28,6 +38,10 @@ class Purchase extends Model
         return [
             'amount' => 'decimal:2',
             'purchased_at' => 'datetime',
+            'status' => PurchaseStatus::class,
+            'fees' => 'decimal:2',
+            'request_payload' => 'json',
+            'response_payload' => 'json',
         ];
     }
 
