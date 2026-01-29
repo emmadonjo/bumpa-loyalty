@@ -36,7 +36,7 @@ services:
       - ./frontend/.env
     ports:
       - "${FRONTEND_PORT}:${FRONTEND_PORT}"
-    command: npm run build -p ${FRONTEND_PORT:-3000}
+    command: npm run start -- -p ${FRONTEND_PORT:-3000}
     depends_on:
       - backend
 

@@ -10,3 +10,5 @@ COPY . .
 RUN npm run build
 
 EXPOSE ${FRONTEND_PORT:-3000}
+
+CMD npm run build

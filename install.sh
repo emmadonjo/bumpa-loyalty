@@ -141,7 +141,8 @@ else
   $COMPOSE_CMD down
 fi
 
-$COMPOSE_CMD up -d --build
+$COMPOSE_CMD  build --no-cache
+$COMPOSE_CMD up -d
 success "Containers are up"
 
 # -----------------------------
