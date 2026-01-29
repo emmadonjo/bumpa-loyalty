@@ -27,13 +27,13 @@ readonly class RewardsService
      */
     public function handle( PurchaseDto $payload): void
     {
-        $user = app(UserService::class)->findById($payload->customerId);
+        $user = app(UserService::class)->find($payload->customerId);
         if (!$user) {
             throw new ModelNotFoundException("No user was found for ID " . $payload['user_id']);
         }
 
         // retrieve or create a new loyalty tracker records for the user
-        $loyaltyInfo = $user->firstOrCreate();
+        $loyaltyInfo = $user->loyaltyInfo()->firstOrCreate();
         $purchaseCount = $loyaltyInfo->purchase_count++;
         $totalSpent = $loyaltyInfo->total_spent + $payload->amount;
 

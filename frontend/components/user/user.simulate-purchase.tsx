@@ -24,7 +24,7 @@ export default function SimulatePurchase(){
                     isDisabled={isSubmitting}
                     isLoading={isSubmitting}
                 >
-                    Simulate Purchase ({money(amount)})
+                    Purchase ({money(amount)})
                 </Button>
             </form>
         </div>

@@ -67,10 +67,26 @@ const usePurchase = () => {
         }
     }
 
+    const cancelPayment = async (
+        reference: string
+    ) => {
+        setIsSubmitting(true);
+        try {
+            await http.post(`/payments/${reference}/cancel`);
+            addToast({description: 'Payment cancelled', color: 'secondary'});
+            router.replace('/');
+        }catch (e) {
+            console.log(e);
+        }finally {
+            setIsSubmitting(false);
+        }
+    }
+
     return {
         isSubmitting,
         simulatePurchase,
         verifyPayment,
+        cancelPayment,
     }
 }
 

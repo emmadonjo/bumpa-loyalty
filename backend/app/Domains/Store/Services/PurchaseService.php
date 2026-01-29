@@ -67,9 +67,10 @@ readonly class PurchaseService
             'customer_id' => $purchase->user_id,
             'amount' => $purchase->amount,
             'reference' => $purchase->reference,
-            'purchased_date' => $purchase->purchased_at,
+            'purchase_date' => $purchase->purchased_at,
             'currency' => $purchase->currency,
             'description' => $purchase->description,
+            'provider' => $purchase->provider,
         ]);
     }
 
