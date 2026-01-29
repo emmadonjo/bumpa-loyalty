@@ -3,3 +3,130 @@
 @plugin '../hero.ts';
 
 @source '../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+
+.achievement-core {
+    position: relative;
+}
+
+.achievement-glow {
+    position: absolute;
+    inset: -30px;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(16,185,129,0.4), transparent 70%);
+    filter: blur(25px);
+    z-index: -1;
+}
+
+.achievement-card {
+    background: linear-gradient(135deg, #0f172a, #020617);
+    color: white;
+    padding: 40px 36px 28px 36px;
+    border-radius: 24px;
+    border: 1px solid rgba(16,185,129,0.4);
+    box-shadow: 0 0 60px rgba(16,185,129,0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    min-width: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+.achievement-icon {
+    background: radial-gradient(circle, #10b981, #047857);
+    padding: 16px;
+    border-radius: 999px;
+    box-shadow: 0 0 30px rgba(16,185,129,0.8);
+}
+
+@keyframes achievement-enter {
+    0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+    60% { transform: scale(1.15) rotate(5deg); opacity: 1; }
+    80% { transform: scale(0.95) rotate(-3deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+.animate-achievement-enter {
+    animation: achievement-enter 0.8s cubic-bezier(.17,.89,.32,1.49);
+}
+
+@keyframes bounce-shake {
+    0% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-8px) rotate(1deg); }
+    50% { transform: translateY(4px) rotate(-1deg); }
+    75% { transform: translateY(-4px) rotate(1deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+}
+
+.animate-bounce-shake {
+    animation: bounce-shake 0.8s ease-in-out infinite;
+}
+
+@keyframes dance {
+    0% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(10deg) scale(1.1); }
+    50% { transform: rotate(-10deg) scale(1.15); }
+    75% { transform: rotate(10deg) scale(1.1); }
+    100% { transform: rotate(0deg) scale(1); }
+}
+
+.animate-dance {
+    animation: dance 0.6s infinite;
+}
+
+@keyframes glowPulse {
+    0% { opacity: 0.3; transform: scale(0.9); }
+    50% { opacity: 0.8; transform: scale(1.1); }
+    100% { opacity: 0.3; transform: scale(0.9); }
+}
+
+.animate-glow-pulse {
+    animation: glowPulse 1.5s infinite;
+}
+
+.sparkles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #34d399;
+    border-radius: 999px;
+    animation: sparkle 1.2s infinite;
+}
+
+@keyframes sparkle {
+    0% { transform: scale(0) translateY(0); opacity: 0; }
+    50% { transform: scale(1) translateY(-20px); opacity: 1; }
+    100% { transform: scale(0) translateY(-40px); opacity: 0; }
+}
+
+.sparkle:nth-child(n) {
+    top: 50%;
+    left: 50%;
+}
+
+.confetti {
+    position: absolute;
+    width: 8px;
+    height: 12px;
+    background: #10b981;
+    animation: confettiFall 3s linear infinite;
+    opacity: 0.8;
+}
+
+.confetti-0 { background:#10b981; left:10%; animation-delay:0s; }
+.confetti-1 { background:#22c55e; left:30%; animation-delay:0.3s; }
+.confetti-2 { background:#34d399; left:50%; animation-delay:0.6s; }
+.confetti-3 { background:#4ade80; left:70%; animation-delay:0.9s; }
+.confetti-4 { background:#86efac; left:90%; animation-delay:1.2s; }
+
+@keyframes confettiFall {
+    0% { transform: translateY(-10vh) rotate(0deg); }
+    100% { transform: translateY(110vh) rotate(720deg); }
+}

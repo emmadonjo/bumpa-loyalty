@@ -15,7 +15,7 @@ final class PurchaseDto
      * @param array $data
      * @return self
      */
-    public static function toArray(array $data): self
+    public static function fromArray(array $data): self
     {
         return new self(
             customerId: $data['customer_id'],

@@ -12,4 +12,6 @@ interface UserAchievementRepositoryInterface
      * @return LengthAwarePaginator<UserAchievement>
      */
     public function get(array $params = []): LengthAwarePaginator;
+
+
 }

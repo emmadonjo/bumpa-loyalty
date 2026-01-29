@@ -39,4 +39,13 @@ readonly class UserService
     {
         return $this->repository->findByEmail($email);
     }
+
+    /**
+     * @param int $id
+     * @return User|null
+     */
+    public function find(int $id): ?User
+    {
+        return $this->repository->findById($id);
+    }
 }

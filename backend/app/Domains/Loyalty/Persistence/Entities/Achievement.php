@@ -2,8 +2,10 @@
 
 namespace App\Domains\Loyalty\Persistence\Entities;
 
+use App\Domains\Accounts\Persistence\Entities\User;
 use app\Domains\Loyalty\Enums\AchievementType;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Achievement extends Model
 {
@@ -30,5 +32,10 @@ class Achievement extends Model
             'threshold' => 'int',
             'reward' => 'decimal:2',
         ];
+    }
+
+    public function users(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'user_achievements');
     }
 }

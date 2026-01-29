@@ -33,4 +33,11 @@ interface UserRepositoryInterface
      * @return User|null
      */
     public function findByEmail(string $email): ?User;
+
+    /**
+     * Find a user their id
+     * @param int $id
+     * @return User|null
+     */
+    public function findById(int $id): ?User;
 }

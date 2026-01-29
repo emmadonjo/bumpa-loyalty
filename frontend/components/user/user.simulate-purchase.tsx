@@ -3,6 +3,7 @@
 import {useState, SubmitEvent} from "react";
 import usePurchase from "@/hooks/user.purchase";
 import Button from "@/components/ui/button.ui";
+import AchievementPop from "@/components/achievement.notify.component";
 
 export default function SimulatePurchase(){
     const [isSuccess, setIsSuccess] = useState<boolean>(false);
@@ -10,6 +11,12 @@ export default function SimulatePurchase(){
 
     const onSubmit = async (e: SubmitEvent) => {
         e.preventDefault();
+        simulatePurchase(() => {
+            setIsSuccess(true);
+            setTimeout(() => {
+                setIsSuccess(false);
+            }, 2500);
+        })
     }
     return (
         <div>
@@ -22,6 +29,12 @@ export default function SimulatePurchase(){
                     Simulate Purchase
                 </Button>
             </form>
+
+            {
+                !isSubmitting && isSuccess && (
+                   <AchievementPop title="Achievement Unlocked" description="You are definitely rocking it with this new achievement of yours" />
+                )
+            }
         </div>
     )
 }

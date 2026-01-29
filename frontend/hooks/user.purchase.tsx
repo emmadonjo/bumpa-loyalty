@@ -10,8 +10,9 @@ const usePurchase = () => {
         onSuccess: () => void,
     ) => {
         setIsSubmitting(true);
+
         try {
-            const response = await http.post(`/api/users/purchase`);
+            const response = await http.post(`/users/purchases`);
             addToast({
                 description: response.data.message ?? 'Purchase successful',
                 color: 'success',

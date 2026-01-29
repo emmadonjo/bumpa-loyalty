@@ -9,7 +9,6 @@ use App\Presentation\Web\Contracts\Controller;
 use App\Presentation\Web\DataTransferObjects\PurchaseDto;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
-
 class PurchaseController extends Controller
 {
     public function __construct(
@@ -26,5 +25,6 @@ class PurchaseController extends Controller
         ]);
 
         $this->purchaseService->purchase($dto);
+        return $this->apiSuccess([], 'Purchase successful');
     }
 }
