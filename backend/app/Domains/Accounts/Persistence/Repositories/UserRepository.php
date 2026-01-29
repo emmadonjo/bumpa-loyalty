@@ -35,7 +35,7 @@ class UserRepository implements UserRepositoryInterface
                     'loyaltyInfo',
                     'loyaltyInfo.currentBadge',
                     'badges',
-                    'bages',
+                    'badges',
                 ]);
             })
             ->where('role', $role->value)
