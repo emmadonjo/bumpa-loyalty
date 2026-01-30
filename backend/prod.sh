@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 set -e
+mkdir -p /var/www/html/storage/logs /var/www/html/bootstrap/cache
+chmod -R ug+rwX /var/www/html/storage /var/www/html/bootstrap/cache
 
-find /var/www/html/storage /var/www/html/bootstrap/cache -type d -exec chmod 775 {} +
-find /var/www/html/storage /var/www/html/bootstrap/cache -type f -exec chmod 664 {} +
 
-# Start main process
+php artisan migrate --seed --force
+
+# start main process
 exec "$@"
