@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     supervisor \
     && docker-php-ext-install \
         pdo_mysql \
+        default-mysql-client \
         mbstring \
         bcmath \
         intl \
