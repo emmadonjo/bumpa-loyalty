@@ -4,11 +4,17 @@ namespace App\Domains\Store\Persistence\Entities;
 
 use App\Domains\Accounts\Persistence\Entities\User;
 use App\Domains\Store\Enums\PurchaseStatus;
+use Database\Factories\PurchaseFactory;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Purchase extends Model
 {
+    /** @use HasFactory<PurchaseFactory> */
+    use HasFactory;
+
     /**
      * Mass-assignable attributes
      * @var string[]
@@ -28,6 +34,14 @@ class Purchase extends Model
         'response_payload',
         'status',
     ];
+
+    /**
+     * @return PurchaseFactory|Factory
+     */
+    protected static function newFactory(): PurchaseFactory|Factory
+    {
+        return PurchaseFactory::new();
+    }
 
     /**
      * Attributes cast types

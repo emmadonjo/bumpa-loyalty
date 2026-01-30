@@ -29,15 +29,17 @@ readonly class RewardsService
     {
         $user = app(UserService::class)->find($payload->customerId);
         if (!$user) {
-            throw new ModelNotFoundException("No user was found for ID " . $payload['user_id']);
+            throw new ModelNotFoundException("No user was found for ID " . $payload->customerId);
         }
 
         // retrieve or create a new loyalty tracker records for the user
         $loyaltyInfo = $user->loyaltyInfo()->firstOrCreate();
-        $purchaseCount = $loyaltyInfo->purchase_count++;
+        $purchaseCount = $loyaltyInfo->purchase_count
+            ? ($loyaltyInfo->purchase_count + 1)
+            : 1;
         $totalSpent = $loyaltyInfo->total_spent + $payload->amount;
 
-        $achievements = $this->getQualifiedAchievements($user->id, $totalSpent, $purchaseCount);
+        $achievements = $this->getQualifiedAchievements($user->id, $totalSpent, $purchaseCount ?? 0);
         $rewards = 0;
 
         foreach ($achievements as $achievement) {

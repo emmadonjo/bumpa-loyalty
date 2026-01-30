@@ -8,10 +8,12 @@ use App\Domains\Accounts\Enums\UserRole;
 use App\Domains\Loyalty\Persistence\Entities\Achievement;
 use App\Domains\Loyalty\Persistence\Entities\Badge;
 use App\Domains\Loyalty\Persistence\Entities\LoyaltyTracker;
+use App\Domains\Store\Persistence\Entities\Purchase;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -93,5 +95,13 @@ class User extends Authenticatable
     public function isAdmin(): bool
     {
         return $this->role == UserRole::ADMIN;
+    }
+
+    /**
+     * @return HasMany<{Purchase>}
+     */
+    public function purchases(): HasMany
+    {
+        return $this->hasMany(Purchase::class);
     }
 }

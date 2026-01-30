@@ -4,11 +4,24 @@ namespace App\Domains\Loyalty\Persistence\Entities;
 
 use App\Domains\Accounts\Persistence\Entities\User;
 use app\Domains\Loyalty\Enums\AchievementType;
+use Database\Factories\AchievementFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Achievement extends Model
 {
+    /** @use HasFactory<AchievementFactory> */
+    use HasFactory;
+
+    /**
+     * @return AchievementFactory
+     */
+    protected static function newFactory(): AchievementFactory
+    {
+        return AchievementFactory::new();
+    }
+
     /**
      * Mass-assignable attributes
      * @var string[]

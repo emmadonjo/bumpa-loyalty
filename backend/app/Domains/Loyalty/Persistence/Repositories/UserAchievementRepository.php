@@ -6,7 +6,6 @@ use App\Domains\Accounts\Enums\UserRole;
 use App\Domains\Loyalty\Persistence\Contracts\UserAchievementRepositoryInterface;
 use App\Domains\Loyalty\Persistence\Entities\UserAchievement;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Contracts\Pagination\Paginator;
 
 class UserAchievementRepository implements UserAchievementRepositoryInterface
 {
