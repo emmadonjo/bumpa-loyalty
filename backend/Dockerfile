@@ -49,6 +49,11 @@ USER www-data
 COPY docker/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 COPY docker/supervisor/*.conf /etc/supervisor/conf.d/
 
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
+
 EXPOSE ${BACKEND_PORT:-8000}
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
+
+COPY entrypoint.sh /usr/local/bin/prod.sh
+RUN chmod +x /usr/local/bin/prod.sh
+ENTRYPOINT ["/usr/local/bin/prod.sh"]
