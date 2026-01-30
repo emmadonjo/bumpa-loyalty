@@ -54,6 +54,6 @@ CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
 EXPOSE ${BACKEND_PORT:-8000}
 
 
-COPY entrypoint.sh /usr/local/bin/prod.sh
+COPY prod.sh /usr/local/bin/prod.sh
 RUN chmod +x /usr/local/bin/prod.sh
 ENTRYPOINT ["/usr/local/bin/prod.sh"]
