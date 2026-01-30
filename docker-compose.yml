@@ -6,7 +6,7 @@ services:
     restart: unless-stopped
     env_file:
       - .env
-      - ./backend/.env
+#      - ./backend/.env
     volumes:
       - ./backend:/var/www/html
       - /var/www/html/vendor
@@ -33,7 +33,7 @@ services:
     restart: unless-stopped
     env_file:
       - .env
-      - ./frontend/.env
+#      - ./frontend/.env
     ports:
       - "${FRONTEND_PORT}:${FRONTEND_PORT}"
     command: npm run start -- -p ${FRONTEND_PORT:-3000}
