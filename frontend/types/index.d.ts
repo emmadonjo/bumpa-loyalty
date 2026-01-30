@@ -29,7 +29,8 @@ export interface Badge {
     achievements_required: number;
     pivot?: {
         awarded_at: string;
-    }
+    },
+    has_badge?: boolean;
 }
 export interface User {
     id: number;
@@ -44,6 +45,7 @@ export interface User {
     badges_count?: number;
     badges?: Badge[];
     achievements: Achievement[];
+    all_badges?: Badge[];
 }
 
 export interface LoyaltyInfo {

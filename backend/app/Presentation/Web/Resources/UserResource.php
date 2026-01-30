@@ -14,6 +14,7 @@ class UserResource extends JsonResource
             'badges' => BadgeResource::collection($this->whenLoaded('badges')),
             'badges_count' => $this->whenCounted('badges'),
             'achievements' => AchievementResource::collection($this->whenLoaded('achievements')),
+//            'all_badges' => BadgeResource::collection($this->whenLoaded('all_badges')),
         ]);
     }
 }

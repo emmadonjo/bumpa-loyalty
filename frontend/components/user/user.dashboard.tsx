@@ -12,17 +12,17 @@ export default function UserDashboard() {
     const {isLoading, user: loyalty} = useLoyaltyTracker(user?.id as number);
     return (
         <div className="grid md:grid-cols-12 gap-8 content-start">
-            <div className="md:col-span-4 lg:col-span-3">
+            <div className="md:col-span-5 lg:col-span-3">
                 <div className="mb-4">
                     <SimulatePurchase />
                 </div>
                 <Skeleton isLoaded={!isLoading}>
                     {
-                        loyalty && <UserBadges badges={loyalty.badges as Badge[]} />
+                        loyalty && loyalty.all_badges &&  (<UserBadges badges={loyalty.all_badges as Badge[]} />)
                     }
                 </Skeleton>
             </div>
-            <div className="md:col-span-8 lg:col-span-8">
+            <div className="md:col-span-7 lg:col-span-8">
                 <div className="mb-5">
                     <Skeleton isLoaded={!isLoading}>
                         {

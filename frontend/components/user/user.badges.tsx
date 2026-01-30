@@ -13,9 +13,9 @@ export default function UserBadges({badges}: {badges: Badge[]}) {
             {badges.length > 0 && (
                 <ul className="mt-5">
                     {badges.map((badge: Badge) => (
-                        <li key={badge.id} className="relative pl-10 pt-3">
-                            <HiOutlineBadgeCheck size={30} className="text-primary absolute left-0 top-3" />
-                            <div className="font-semibold">{badge.name}</div>
+                        <li key={badge.id} className={`${badge.has_badge ? '' : 'text-default-100'} relative pl-10 pt-3`}>
+                            <HiOutlineBadgeCheck size={30} className={`${badge.has_badge ? 'text-primary' : 'text-default-100'} absolute left-0 top-3`} />
+                            <div className="font-medium">{badge.name}</div>
                             <div className="text-xs text-default-600">{badge.pivot ? badge.pivot.awarded_at.substring(0, 10) : ''}</div>
                         </li>
                     ))}

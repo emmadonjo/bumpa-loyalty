@@ -5,7 +5,9 @@ namespace App\Domains\Accounts\Persistence\Repositories;
 use App\Domains\Accounts\Enums\UserRole;
 use App\Domains\Accounts\Persistence\Contracts\UserRepositoryInterface;
 use App\Domains\Accounts\Persistence\Entities\User;
+use App\Domains\Loyalty\Persistence\Entities\Badge;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\DB;
 
 class UserRepository implements UserRepositoryInterface
 {
@@ -49,15 +51,27 @@ class UserRepository implements UserRepositoryInterface
      */
     public function getUserWithLoyaltyInfo(int $id): ?User
     {
-       return User::where('id', $id)
-           ->with([
-               'loyaltyInfo',
-               'loyaltyInfo.currentBadge',
-               'achievements',
-               'badges'
-           ])
-           ->withCount(['achievements', 'badges'])
-           ->first();
+        $user = User::where('id', $id)
+            ->with([
+                'loyaltyInfo',
+                'loyaltyInfo.currentBadge',
+                'achievements',
+                'badges',
+            ])
+            ->withCount(['achievements', 'badges'])
+            ->first();
+
+        if (!$user) {
+            return null;
+        }
+
+        $earnedBadgeIds = $user->badges->pluck('id')->toArray();
+        $user->all_badges = Badge::all()->map(function ($badge) use ($earnedBadgeIds) {
+            $badge->has_badge = in_array($badge->id, $earnedBadgeIds);
+            return $badge;
+        });
+
+        return $user;
     }
 
     /**
