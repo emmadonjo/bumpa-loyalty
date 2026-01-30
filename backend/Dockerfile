@@ -44,7 +44,6 @@ RUN mkdir -p /var/log/supervisor
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 775 storage bootstrap/cache
 
-USER www-data
 
 COPY docker/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 COPY docker/supervisor/*.conf /etc/supervisor/conf.d/
@@ -53,7 +52,9 @@ CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
 
 EXPOSE ${BACKEND_PORT:-8000}
 
-
 COPY prod.sh /usr/local/bin/prod.sh
 RUN chmod +x /usr/local/bin/prod.sh
+
+USER www-data
+
 ENTRYPOINT ["/usr/local/bin/prod.sh"]
