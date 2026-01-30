@@ -1,6 +1,18 @@
 # BUMPA LOYALTY APP
 
 Bumpa Loyalty app is a gamification solution to reward customers with great patronage.
+## Website
+- URL: [https://bumpa-loyalty.vercel.app/](https://bumpa-loyalty.vercel.app/)
+
+To log in to the website, use these details:
+**Admin Portal**
+- email: **admin@example.com**
+- password: **password**
+
+**Customer Portal**
+- email: **customer@example.com**
+- password: **password**
+
 
 ## Applications
 - Frontend: A NextJs frontend app serving both the admin and customer portals
