@@ -14,15 +14,15 @@ services:
       db:
         condition: service_healthy
 
-  backend-worker:
-    build:
-      context: ./backend
-    container_name: loyalty-backend-worker
-    env_file:
-      - .env
-    depends_on:
-      - backend
-      - db
+#  backend-worker:
+#    build:
+#      context: ./backend
+#    container_name: loyalty-backend-worker
+#    env_file:
+#      - .env
+#    depends_on:
+#      - backend
+#      - db
 
   frontend:
     build:
