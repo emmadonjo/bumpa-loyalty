@@ -12,9 +12,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libzip-dev \
     libicu-dev \
     supervisor \
+    default-mysql-client \
     && docker-php-ext-install \
         pdo_mysql \
-        default-mysql-client \
         mbstring \
         bcmath \
         intl \
