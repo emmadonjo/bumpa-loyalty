@@ -20,7 +20,6 @@ export default function CustomersList(){
         {name: 'Tot. Achievements', key: 'achievements_count', sortable: false},
         {name: 'Current Badge', key: 'current_badge', sortable: false},
         {name: 'Date Joined', key: 'created_at', sortable: false},
-        // {name: 'Actions', key: 'actions', sortable: false},
     ];
 
     return (
@@ -38,6 +37,7 @@ export default function CustomersList(){
                     total={meta.last_page as number}
                     onChange={(page) => setPage(page)}
                 />}
+                className="customers-list"
             >
                 <TableHeader>
                     {tableHeaders.map((header: TableHeaderColumnProps) => (
@@ -56,11 +56,6 @@ export default function CustomersList(){
                                 <TableCell className="whitespace-nowrap text-center">{ datum.achievements_count ?? 0 }</TableCell>
                                 <TableCell className="whitespace-nowrap">{ datum.loyalty_info?.current_badge ? datum.loyalty_info.current_badge.name : '' }</TableCell>
                                 <TableCell className="whitespace-nowrap">{ formatDate(datum.created_at, 'DD')}</TableCell>
-                                {/*<TableCell>*/}
-                                {/*    <div className="flex items-center gap-x-4">*/}
-
-                                {/*    </div>*/}
-                                {/*</TableCell>*/}
                             </TableRow>
                         ))
                     }

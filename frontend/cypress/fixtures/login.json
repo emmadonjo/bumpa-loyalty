@@ -1,0 +1,16 @@
+{
+  "status": true,
+  "message": "Login success",
+  "data": {
+    "token": "1|hsahsatjh21621813891281",
+    "user": {
+      "id": 1,
+      "name": "Jane Doe",
+      "email": "jandoe@gmail.com",
+      "role": "customer",
+      "email_verified_at": "1/29/2026, 10:34:36 AM",
+      "created_at": "1/29/2026, 10:34:36 AM",
+      "updated_at": "1/29/2026, 10:34:36 AM"
+    }
+  }
+}

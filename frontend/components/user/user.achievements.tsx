@@ -35,6 +35,7 @@ export default function UserAchievements(){
                         total={meta.last_page as number}
                         onChange={(page) => setPage(page)}
                     />}
+                    className="userAchievements"
                 >
                     <TableHeader>
                         {tableHeaders.map((header: TableHeaderColumnProps) => (

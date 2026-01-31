@@ -13,7 +13,7 @@ export default function UserProfileMenu() {
     const { logoutUser, user } = useAuth();
     return (
         <Dropdown>
-            <DropdownTrigger>
+            <DropdownTrigger className="user-menu">
                 <div className='inline-flex items-center gap-x-4 hover:cursor-pointer'>
                     <Avatar
                         isBordered
@@ -38,6 +38,7 @@ export default function UserProfileMenu() {
                     as="button"
                     onClick={logoutUser}
                     color='danger'
+                    className="logout"
                 >
                     Log out
                 </DropdownItem>

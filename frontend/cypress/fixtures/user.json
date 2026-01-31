@@ -1,0 +1,84 @@
+{
+  "id": 1,
+  "name": "Jane Doe",
+  "role": "customer",
+  "email": "customer@example.com",
+  "email_verified_at": "2026-01-29 10:35:00 AM",
+  "created_at": "2026-01-29 10:35:00 AM",
+  "updated_at": "2026-01-29 10:35:00 AM",
+
+  "achievements_count": 10,
+
+  "loyalty_info": {
+    "id": 1,
+    "current_badge_id": 1,
+    "purchase_count": 10,
+    "total_spent": 50000,
+    "payout_balance": 1500,
+    "total_achievements": 10,
+    "created_at": "2026-01-29 10:35:00 AM",
+    "updated_at": "2026-01-29 10:35:00 AM"
+  },
+
+  "badges_count": 1,
+
+  "badges": [
+    {
+      "id": 1,
+      "name": "Newcomer",
+      "achievements_required": 1,
+      "pivot": {
+        "awarded_at": "2026-01-29 10:35:00 AM"
+      }
+    }
+  ],
+
+  "achievements": [
+    { "id": 1, "name": "Getting Started", "type": "purchase_count", "threshold": 1 },
+    { "id": 2, "name": "First Steps", "type": "purchase_count", "threshold": 2 },
+    { "id": 3, "name": "Getting Warmer", "type": "purchase_count", "threshold": 3 },
+    { "id": 4, "name": "On a Roll", "type": "purchase_count", "threshold": 4 },
+    { "id": 5, "name": "Committed Buyer", "type": "purchase_count", "threshold": 5 },
+    { "id": 6, "name": "Loyal Customer", "type": "purchase_count", "threshold": 6 },
+    { "id": 7, "name": "Regular Shopper", "type": "purchase_count", "threshold": 7 },
+    { "id": 8, "name": "Power Buyer", "type": "purchase_count", "threshold": 8 },
+    { "id": 9, "name": "Elite Shopper", "type": "purchase_count", "threshold": 9 },
+    { "id": 10, "name": "Ultimate Loyalist", "type": "purchase_count", "threshold": 10 }
+  ],
+
+  "all_badges": [
+    {
+      "id": 1,
+      "name": "Newcomer",
+      "achievements_required": 1,
+      "has_badge": true,
+      "pivot": {
+        "awarded_at": "2026-01-29 10:35:00 AM"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Bronze",
+      "achievements_required": 3,
+      "has_badge": false
+    },
+    {
+      "id": 3,
+      "name": "Silver",
+      "achievements_required": 5,
+      "has_badge": false
+    },
+    {
+      "id": 4,
+      "name": "Gold",
+      "achievements_required": 8,
+      "has_badge": false
+    },
+    {
+      "id": 5,
+      "name": "Platinum",
+      "achievements_required": 10,
+      "has_badge": false
+    }
+  ]
+}

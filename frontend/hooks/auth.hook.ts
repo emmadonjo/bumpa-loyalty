@@ -9,7 +9,7 @@ import {useRouter} from "next/navigation";
 const useAuth = () => {
     const dispatch: AppDispatch = useDispatch();
     const router = useRouter();
-    const auth =useSelector((state: RootState) => state.auth);
+    const auth = useSelector((state: RootState) => state.auth);
 
     const loginUser = async (credentials: LoginData) => {
         const result = await dispatch(login(credentials));

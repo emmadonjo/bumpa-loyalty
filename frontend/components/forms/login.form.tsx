@@ -27,6 +27,7 @@ export default function LoginForm(){
                 isDisabled={isLoading}
                 onChange={(e) => setEmail(e.target.value)}
                 errorMessage={errors?.email}
+                name="email"
             />
 
             <PasswordInput
@@ -37,6 +38,7 @@ export default function LoginForm(){
                 value={password}
                 isDisabled={isLoading}
                 errorMessage={errors?.email}
+                name="password"
                 onChange={(e) => setPassword(e.target.value)}
             />
 

@@ -3,7 +3,7 @@ import {HiOutlineBadgeCheck} from "react-icons/hi";
 
 export default function UserBadges({badges}: {badges: Badge[]}) {
     return (
-        <div className="bg-white p-6">
+        <div className="bg-white p-6 user-badges">
             <h4 className="text-2xl font-semibold">Your Badges</h4>
 
             {badges.length < 1 && (<p className="mt-4 text-sm">

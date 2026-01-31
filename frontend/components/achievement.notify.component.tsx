@@ -19,7 +19,7 @@ export default function AchievementPop({
                 ))}
             </div>
 
-            <div className="fixed inset-0 z-50 flex items-center justify-center">
+            <div className="fixed inset-0 z-50 flex items-center justify-center .achievement-unlocked">
                 <div className="achievement-core animate-achievement-enter">
                     <div className="achievement-glow animate-glow-pulse" />
                     <div className="achievement-card animate-bounce-shake">

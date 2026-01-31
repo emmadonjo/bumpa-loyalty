@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "name": "Leanne Graham",
+    "role": "customer",
+    "email": "Sincere@april.biz",
+    "email_verified_at": "1/29/2026, 10:34:36 AM",
+    "created_at": "1/29/2026, 10:34:36 AM",
+    "updated_at":  "1/29/2026, 10:34:36 AM",
+    "achievements_count": 3
+  },
+  {
+    "id": 2,
+    "name": "Jane Doe",
+    "role": "customer",
+    "email": "janedoe@gmail.com",
+    "email_verified_at": "1/29/2026, 10:34:36 AM",
+    "created_at": "1/29/2026, 10:34:36 AM",
+    "updated_at":  "1/29/2026, 10:34:36 AM",
+    "achievements_count": 2
+  },
+  {
+    "id": 3,
+    "name": "Clement Doe",
+    "role": "customer",
+    "email": "clementdoe@gmail.com",
+    "email_verified_at": "1/29/2026, 10:34:36 AM",
+    "created_at": "1/29/2026, 10:34:36 AM",
+    "updated_at":  "1/29/2026, 10:34:36 AM",
+    "achievements_count": 0
+  },
+  {
+    "id": 4,
+    "name": "Patricia Lebsack",
+    "role": "customer",
+    "email": "Julianne.OConner@kory.org",
+    "email_verified_at": "1/29/2026, 10:34:36 AM",
+    "created_at": "1/29/2026, 10:34:36 AM",
+    "updated_at":  "1/29/2026, 10:34:36 AM",
+    "achievements_count": 0
+  },
+  {
+    "id": 5,
+    "name": "Chelsey Dietrich",
+    "role": "customer",
+    "email": "Lucio_Hettinger@annie.ca",
+    "email_verified_at": "1/29/2026, 10:34:36 AM",
+    "created_at": "1/29/2026, 10:34:36 AM",
+    "updated_at":  "1/29/2026, 10:34:36 AM",
+    "achievements_count": 4
+  },
+  {
+    "id": 6,
+    "name": "Mrs. Dennis Schulist",
+    "role": "customer",
+    "email": "Karley_Dach@jasper.info",
+    "email_verified_at": "1/29/2026, 10:34:36 AM",
+    "created_at": "1/29/2026, 10:34:36 AM",
+    "updated_at":  "1/29/2026, 10:34:36 AM",
+    "achievements_count": 8
+  },
+  {
+    "id": 7,
+    "name": "Kurtis Weissnat",
+    "role": "customer",
+    "email": "Telly.Hoeger@billy.biz",
+    "email_verified_at": "1/29/2026, 10:34:36 AM",
+    "created_at": "1/29/2026, 10:34:36 AM",
+    "updated_at":  "1/29/2026, 10:34:36 AM",
+    "achievements_count": 2
+  },
+  {
+    "id": 8,
+    "name": "Nicholas Runolfsdottir V",
+    "role": "customer",
+    "email": "Sherwood@rosamond.me",
+    "email_verified_at": "1/29/2026, 10:34:36 AM",
+    "created_at": "1/29/2026, 10:34:36 AM",
+    "updated_at":  "1/29/2026, 10:34:36 AM",
+    "achievements_count": 1
+  },
+  {
+    "id": 9,
+    "name": "Glenna Reichert",
+    "role": "customer",
+    "email": "Chaim_McDermott@dana.io",
+    "email_verified_at": "1/29/2026, 10:34:36 AM",
+    "created_at": "1/29/2026, 10:34:36 AM",
+    "updated_at":  "1/29/2026, 10:34:36 AM",
+    "achievements_count": 0
+  },
+  {
+    "id": 10,
+    "name": "Clementina DuBuque",
+    "role": "customer",
+    "email": "Rey.Padberg@karina.biz",
+    "email_verified_at": "1/29/2026, 10:34:36 AM",
+    "created_at": "1/29/2026, 10:34:36 AM",
+    "updated_at":  "1/29/2026, 10:34:36 AM",
+    "achievements_count": 0
+  }
+]

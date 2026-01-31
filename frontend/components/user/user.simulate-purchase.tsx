@@ -18,7 +18,7 @@ export default function SimulatePurchase(){
     }
     return (
         <div>
-            <form onSubmit={onSubmit} className="flex items-center justify-center w-full">
+            <form onSubmit={onSubmit} className="flex items-center justify-center w-full" id="purchaseForm">
                 <Button
                     type="submit"
                     isDisabled={isSubmitting}
