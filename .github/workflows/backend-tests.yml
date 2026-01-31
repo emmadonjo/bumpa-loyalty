@@ -46,4 +46,4 @@ jobs:
       - name: Run Tests with Coverage
         run: |
           export XDEBUG_MODE=coverage
-          ./vendor/bin/phpunit --coverage-text
+          ./vendor/bin/pest --coverage-text
